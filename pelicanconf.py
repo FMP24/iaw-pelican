@@ -3,7 +3,7 @@ SITENAME = 'Practica1-IAW'
 SITEURL = ''
 
 PATH = 'content'
-THEME = 'pelican-themes/nmnlist'
+THEME = 'themes/nmnlist'
 
 TIMEZONE = 'Europe/Rome'
 
