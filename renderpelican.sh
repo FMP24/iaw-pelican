@@ -34,12 +34,12 @@ echo "Actualizando repositorio principal"
 cd "$PELICAN_DIR"
 git add . > /dev/null
 git commit -a -m "Actualización automática del sitio" > /dev/null
-git push origin "$BRANCH" > /dev/null 2>&1
+git push "$ORIGIN" "$BRANCH" > /dev/null 
 
 echo "Actualizando repositorio de salida"
 cd "$OUTPUT_DIR"
 git add . > /dev/null
 git commit -a -m "Actualización automática del sitio" > /dev/null
-git push "$ORIGIN" "$BRANCH" > /dev/null 2>&1
+git push "$ORIGIN" "$BRANCH" > /dev/null
 
 exit 0
