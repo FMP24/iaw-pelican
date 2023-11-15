@@ -9,7 +9,7 @@ OUTPUT_DIR="$BASE_DIR/output"
 # Error handling
 
 # No correr como root
-if [ $(id -u) -e 0 ]
+if [ $(id -u) -eq 0 ]
   then echo "¡¡No corras este script con permisos de root!!"
   exit
 fi
@@ -32,17 +32,17 @@ echo "Generando página web..."
 pelican "$PELICAN_DIR"/content > /dev/null
 cp -r "$PELICAN_DIR"/output/* "$OUTPUT_DIR"
 
-
 echo "Actualizando repositorio principal"
 cd "$PELICAN_DIR"
-git add .
-git commit -a -m "Actualización automática del sitio"
-git push origin "$BRANCH"
+git add . > /dev/null
+git commit -a -m "Actualización automática del sitio" > /dev/null
+git push origin "$BRANCH" > /dev/null
 
 echo "Actualizando repositorio de salida"
 cd "$OUTPUT_DIR"
-git add .
-git commit -a -m "Actualización automática del sitio"
-git push "$2" "$1"
+git add . > /dev/null
+git commit -a -m "Actualización automática del sitio" > /dev/null
+git push "$2" "$1" > /dev/null
+
 
 exit 0
