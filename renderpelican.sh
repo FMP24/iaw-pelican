@@ -4,7 +4,8 @@
 BASE_DIR="/home/fran/venv/pelican"
 PELICAN_DIR="$BASE_DIR/web"
 OUTPUT_DIR="$BASE_DIR/output"
-
+ORIGIN="$2"
+BRANCH="$1"
 
 # Error handling
 
@@ -23,7 +24,7 @@ fi
 
 # Origen default -> origin
 if [ "$#" -eq 1 ]; then
-	$2="origin"
+	$ORIGIN="origin"
 fi
 
 #Script
@@ -42,6 +43,6 @@ echo "Actualizando repositorio de salida"
 cd "$OUTPUT_DIR"
 git add . > /dev/null
 git commit -a -m "Actualización automática del sitio" > /dev/null
-git push "$2" "$1" > /dev/null
+git push "$ORIGIN" "$BRANCH" > /dev/null
 
 exit 0
