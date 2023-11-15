@@ -10,21 +10,20 @@ BRANCH="$1"
 # Error handling
 
 # No correr como root
-if [ $(id -u) -eq 0 ]
-  then echo "¡¡No corras este script con permisos de root!!"
+if [ $(id -u) -eq 0 ]; then
+  echo "¡¡No corras este script con permisos de root!!"
   exit 1
 fi
 
 # Error de uso
 if [ "$#" -ne 2 || "$#" -ne 1 ]; then
         echo "Uso: $0 <Nombre rama> [Origen (Por defecto: origin)] "
-        IFS="$saved_ifs"
         exit 1
 fi
 
 # Origen default -> origin
 if [ "$#" -eq 1 ]; then
-	$ORIGIN="origin"
+	ORIGIN="origin"
 fi
 
 #Script
