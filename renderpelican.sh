@@ -11,11 +11,11 @@ OUTPUT_DIR="$BASE_DIR/output"
 # No correr como root
 if [ $(id -u) -eq 0 ]
   then echo "¡¡No corras este script con permisos de root!!"
-  exit
+  exit 1
 fi
 
 # Error de uso
-if [ "$#" -ne 2 && "$#" -ne 1 ]; then
+if [ "$#" -ne 2 || "$#" -ne 1 ]; then
         echo "Uso: $0 <Nombre rama> [Origen (Por defecto: origin)] "
         IFS="$saved_ifs"
         exit 1
@@ -43,6 +43,5 @@ cd "$OUTPUT_DIR"
 git add . > /dev/null
 git commit -a -m "Actualización automática del sitio" > /dev/null
 git push "$2" "$1" > /dev/null
-
 
 exit 0
